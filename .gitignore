@@ -1,2 +1,5 @@
 .vscode/settings.json
 target/
+**/.vscode/**
+**/.idea/** 
+.DS_Store
