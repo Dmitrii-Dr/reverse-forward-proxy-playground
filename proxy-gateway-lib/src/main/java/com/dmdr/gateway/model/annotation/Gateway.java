@@ -7,10 +7,16 @@ import java.lang.annotation.ElementType;
 
 /**
  * Custom annotation to mark resource classes for gateway registration.
- * Accepts a string url.
+ * <p>
+ * The value is a mandatory prefix for all registered paths of the resource.
+ * Example: @Gateway("customer-service") will register all paths as /customer-service/your-path
+ * </p>
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Gateway {
-    String url();
+    /**
+     * Mandatory prefix for all resource paths. Example: "customer-service".
+     */
+    String value();
 }

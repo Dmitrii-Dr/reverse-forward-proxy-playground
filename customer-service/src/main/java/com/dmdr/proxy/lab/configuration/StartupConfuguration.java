@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
-import com.dmdr.gateway.model.annotation.GatewayProcessor;
+import com.dmdr.gateway.ProxyGatewayJakartaConfiguration;
 
 import io.quarkus.runtime.Startup;
 
@@ -12,11 +12,11 @@ import io.quarkus.runtime.Startup;
 @Startup
 @Slf4j
 public class StartupConfuguration {
-    private final GatewayProcessor gatewayProcessor;
+     private final ProxyGatewayJakartaConfiguration proxyGatewayJakartaConfiguration;
 
     @Inject
-    public StartupConfuguration(GatewayProcessor gatewayProcessor) {
+    public StartupConfuguration(ProxyGatewayJakartaConfiguration gatewayProcessor) {
         log.info("StartupConfuguration BEGIN");
-        this.gatewayProcessor = gatewayProcessor;
+        this.proxyGatewayJakartaConfiguration = gatewayProcessor;
     }
 }
