@@ -43,6 +43,7 @@ public class RegistrationResource {
         if (targetUrl == null) {
             return Response.status(Response.Status.NOT_FOUND).entity("Service or endpoint not found").build();
         }
+        //TODO Consider injecting a reusable client instance or using a client pool to avoid the overhead 
         Client client = ClientBuilder.newClient();
         Response response = client.target(targetUrl).request().get();
         String result = response.readEntity(String.class);
