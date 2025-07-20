@@ -1,6 +1,4 @@
-# Use OpenJDK as the base image
-FROM --platform=linux/amd64 openjdk:17-jdk-alpine
-
+FROM --platform=linux/amd64 eclipse-temurin:21-jre-alpine
 # Set the working directory
 WORKDIR /app
 
