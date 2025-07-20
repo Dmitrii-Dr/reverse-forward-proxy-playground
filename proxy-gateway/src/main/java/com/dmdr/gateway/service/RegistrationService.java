@@ -34,7 +34,11 @@ public class RegistrationService {
         String externalId = buildId(host, url);
         RegistryUrlEntity entity = repository.findByExternalId(externalId);
         if (entity != null) {
-            return entity.host + entity.url;
+            String host = entity.host.startsWith("http://") || entity.host.startsWith("https://") 
+                ? entity.host 
+                : "http://" + entity.host;
+            String url = entity.url.startsWith("/") ? entity.url : "/" + entity.url;
+            return host + url;
         }
         return null;
     }
