@@ -49,6 +49,7 @@ public class GatewayProcessor {
             }
             log.warn("Multiple @Gateway-annotated classes found with the same value: " + gatewayValues.iterator().next() + ". Classes: " + classNames.toString());
         }
+        
         Class<?> clazz = gatewayClasses.iterator().next();
         Gateway gateway = clazz.getAnnotation(Gateway.class);
         String gatewayPrefix = gateway.value();

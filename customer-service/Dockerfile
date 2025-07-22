@@ -11,7 +11,7 @@ COPY target/quarkus-app/app/ /app/app/
 COPY target/quarkus-app/quarkus/ /app/quarkus/
 
 # Expose the port the app runs on
-EXPOSE 8081
+EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "/app/quarkus-run.jar"]

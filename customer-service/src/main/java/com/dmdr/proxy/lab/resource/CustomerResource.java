@@ -11,11 +11,12 @@ import com.dmdr.gateway.model.annotation.Gateway;
 
 @Gateway("customer-service")
 @ApplicationScoped
+@Path("/")
 public class CustomerResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/customers")
+    @Path("customers")
     public List<String> getCustomers() {
         return List.of("Alice3", "Bob", "Charlie");
     }   
