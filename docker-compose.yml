@@ -1,48 +1,15 @@
 version: '3.8'
 services:
-  postgres:
-    image: postgres:16
-    container_name: gateway-registrator
-    environment:
-      POSTGRES_DB: routes_registry
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5442:5432"
-
   info-service:
     build: ./info-service
     container_name: info-service
-    depends_on:
-      proxy-gateway:
-        condition: service_healthy
+    # depends_on removed: proxy-gateway is now external
     ports:
       - "8082:8080"
 
   customer-service:
     build: ./customer-service
     container_name: customer-service
-    depends_on:
-      proxy-gateway:
-        condition: service_healthy
+    # depends_on removed: proxy-gateway is now external
     ports:
       - "8081:8080"
-
-  proxy-gateway:
-    build: ./proxy-gateway
-    container_name: proxy-gateway
-    depends_on:
-      - postgres
-    environment:
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: routes_registry
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-    ports:
-      - "8080:8080"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/q/health"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
